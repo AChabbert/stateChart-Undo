@@ -12,13 +12,12 @@ const stage = new Konva.Stage({
   height: 400,
 });
 
-// Une couche pour la ligne en cours de dessin (il peut y en avoir plusieurs)
-const temporaire = new Konva.Layer();
-// Une couche pour les lignes déjà dessinées
+// Une couche pour le dessin
 const dessin = new Konva.Layer();
+// Une couche pour la polyline en cours de construction
+const temporaire = new Konva.Layer();
 stage.add(dessin);
 stage.add(temporaire);
-
 
 // La ligne en cours de dessin
 let rubber;
@@ -73,8 +72,8 @@ const rubberBandingMachine = createMachine(
       saveLine: (context, event) => {
         rubber.remove(); // On l'enlève de la couche temporaire
         rubber.stroke("black"); // On change la couleur
-        dessin.add(rubber); // On l'ajoute à la couche de dessin
-      }
+        dessin.add(rubber); // On l'ajoute à la ouche dessin   
+      },
     },
   }
 );
